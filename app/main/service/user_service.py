@@ -16,7 +16,8 @@ def save_new_user(data):
             registered_on=datetime.datetime.utcnow()
         )
         save_changes(new_user)
-        return generate_token(user)
+        tokenizer = User.query.filter_by(username=data['username']).first()
+        return generate_token(tokenizer)
     else:
         response_object = {
             'status': 'failed',

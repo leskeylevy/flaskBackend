@@ -20,10 +20,18 @@ class UserList(Resource):
 
     @api.response(201, 'User created Successfully')
     @api.doc('create a new user')
-    @api.expect(_user, validate=True)
+    # @api.expect(_user, validate=True)
     def post(self):
         """ Create a new User """
-        data = request.json
+        username = request.form.get("username")
+        password = request.form.get("password")
+        email = request.form.get("email")
+        data = {
+            "username": username,
+            "password": password,
+            "email": email
+        }
+        # return print(data)
         return save_new_user(data)
 
 
