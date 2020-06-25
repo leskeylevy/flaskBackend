@@ -26,10 +26,12 @@ class UserList(Resource):
         username = request.form.get("username")
         password = request.form.get("password")
         email = request.form.get("email")
+        role = request.form.get("role")
         data = {
             "username": username,
             "password": password,
-            "email": email
+            "email": email,
+            "role": role
         }
         # return print(data)
         return save_new_user(data)
