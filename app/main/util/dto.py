@@ -19,3 +19,17 @@ class AuthDto:
         'username': fields.String(required=True, description='username'),
         'password': fields.String(required=True, description='password'),
     })
+
+
+class BlogDto:
+    api = Namespace('blogs', description='Blog related operations')
+    blog = api.model('blog_post', {
+        'title': fields.String(required=True, description='Blog title'),
+        'slug': fields.String(description='Blog slug'),
+        'content': fields.String(required=True, description='Blog content'),
+        'status': fields.String(required=True, description='Publish status'),
+        'created_on': fields.String(required=True, description='Publishing date'),
+        'caption': fields.String(required=True, description='Blog caption'),
+        'author_id': fields.String(required=True, description='Author'),
+        'img': fields.String(description='Blog image')
+    })
