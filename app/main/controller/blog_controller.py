@@ -2,7 +2,7 @@ from flask import request
 from flask_restx import Resource
 
 from ..util.dto import BlogDto
-from ..service.blog_service import save_new_blog, get_all_blogs, get_one_blog
+from ..service.blog_service import save_new_blog, get_all_blogs, get_one_blog, edit_blog
 
 api = BlogDto.api
 _blog = BlogDto.blog
@@ -16,25 +16,40 @@ class Bloglist(Resource):
         """list all blogs"""
         return get_all_blogs()
 
-    @api.response(201, "blog updated/added")
+
+@api.route('/editBlog')
+@api.response(200, "blog updated/added")
+class AddBlog(Resource):
     @api.doc('create or update a blog')
     @api.expect(_blog, validate=True)
     def post(self):
-        """ Creates/ updates Blog"""
+        """updates Blog"""
+        data = request.json
+        return edit_blog(data)
+
+
+@api.route('/addBlog')
+@api.response(200, "blog added")
+class AddBlog(Resource):
+    @api.doc('create or update a blog')
+    @api.expect(_blog, validate=True)
+    def post(self):
+        """creates Blog"""
         data = request.json
         return save_new_blog(data)
 
 
-@api.route('/<title>')
-@api.param('id', 'The blog identifier')
+@api.route('/one')
+@api.param('slug', 'The blog identifier')
 @api.response(404, "Blog not found.")
 class Blog(Resource):
-    @api.doc('get a blog')
+    @api.doc('get one blog')
     @api.marshal_list_with(_blog)
-    def get(self, title):
+    def post(self):
         """get blog with given title"""
-        blog = get_one_blog(title)
+        slug = request.json['slug']
+        blog = get_one_blog(slug)
         if not blog:
-            api.abort(404)
+            return 404
         else:
             return blog

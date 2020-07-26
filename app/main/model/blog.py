@@ -11,10 +11,11 @@ class Blog(db.Model):
     slug = db.Column(db.String(255))
     created_on = db.Column(db.DateTime, nullable=False)
     content = db.Column(db.String(12000), nullable=False)
-    status = db.Column(db.String(50), nullable=False)
+    status = db.Column(db.Integer, nullable=False)
     caption = db.Column(db.String(500), nullable=False)
     img = db.Column(db.String(350), nullable=False)
     author_id = db.Column(db.Integer)
+    updated_on = db.Column(db.DateTime, nullable=False)
 
     def slugify_title(self, title):
         self.slug = slugify(title)
