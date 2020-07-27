@@ -2,7 +2,7 @@ from flask import request
 from flask_restx import Resource
 
 from ..util.dto import BlogDto
-from ..service.blog_service import save_new_blog, get_all_blogs, get_one_blog, edit_blog
+from ..service.blog_service import save_new_blog, get_all_blogs, get_one_blog, edit_blog, get_all_published_blogs
 
 api = BlogDto.api
 _blog = BlogDto.blog
@@ -15,6 +15,15 @@ class Bloglist(Resource):
     def get(self):
         """list all blogs"""
         return get_all_blogs()
+
+
+@api.route('/published')
+class PublishedBloglist(Resource):
+    @api.doc('list_of_published_blogs')
+    @api.marshal_list_with(_blog, envelope='data')
+    def get(self):
+        """list all published blogs"""
+        return get_all_published_blogs()
 
 
 @api.route('/editBlog')

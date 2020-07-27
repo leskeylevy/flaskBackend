@@ -11,10 +11,11 @@ class Auth:
             user = User.query.filter_by(username=data['username']).first()
             if user and user.check_password(data['password']):
                 auth_token = user.encode_auth_token(user.id)
+                # print('reched here!')
                 if auth_token:
                     response_object = {
-                        # 'status': 'success',
-                        # 'message': 'Successfully logged in.',
+                        'status': 'success',
+                        'message': 'Successfully logged in.',
                         'access_token': auth_token.decode()
                     }
                     return response_object, 200

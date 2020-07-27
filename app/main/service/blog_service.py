@@ -52,7 +52,11 @@ def edit_blog(data):
 
 
 def get_all_blogs():
-    return Blog.query.all()
+    return Blog.query.order_by(Blog.created_on.desc()).all()
+
+
+def get_all_published_blogs():
+    return Blog.query.filter_by(status='1').order_by(Blog.created_on.desc()).all()
 
 
 def get_one_blog(slug):
