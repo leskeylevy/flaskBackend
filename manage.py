@@ -3,6 +3,7 @@ import unittest
 
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
+from flask_cors import CORS
 
 from app.main import create_app, db
 from app.main.model import user, blacklist, blog
@@ -32,4 +33,5 @@ def test():
 
 
 if __name__ == '__main__':
+    CORS(app)
     manager.run()
