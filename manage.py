@@ -11,6 +11,7 @@ from app import blueprint
 
 app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
 app.register_blueprint(blueprint)
+CORS(app, support_credentials=True)
 
 
 app.app_context().push()
@@ -33,5 +34,4 @@ def test():
 
 
 if __name__ == '__main__':
-    CORS(app)
     manager.run()

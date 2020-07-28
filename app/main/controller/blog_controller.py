@@ -1,4 +1,4 @@
-from flask import request
+import flask
 from flask_restx import Resource
 
 from ..util.dto import BlogDto
@@ -33,7 +33,7 @@ class AddBlog(Resource):
     @api.expect(_blog, validate=True)
     def post(self):
         """updates Blog"""
-        data = request.json
+        data = flask.request.json
         return edit_blog(data)
 
 
@@ -44,7 +44,7 @@ class AddBlog(Resource):
     @api.expect(_blog, validate=True)
     def post(self):
         """creates Blog"""
-        data = request.json
+        data = flask.request.json
         return save_new_blog(data)
 
 
@@ -56,7 +56,7 @@ class Blog(Resource):
     @api.marshal_list_with(_blog)
     def post(self):
         """get blog with given title"""
-        slug = request.json['slug']
+        slug = flask.request.json['slug']
         blog = get_one_blog(slug)
         if not blog:
             return 404
