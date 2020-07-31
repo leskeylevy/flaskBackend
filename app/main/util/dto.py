@@ -34,3 +34,12 @@ class BlogDto:
         'author_id': fields.String(required=True, description='Author'),
         'img': fields.String(description='Blog image')
     })
+
+
+class CommentsDto:
+    api = Namespace('comments', description='comment related opreations')
+    comment = api.model('comment', {
+        'username': fields.String(required=True, description='username for the commenting party'),
+        'comment': fields.String(required=True, description='The actual comment'),
+        'blog_id': fields.Integer(required=True, description='the blog id where the comments belongs')
+    })

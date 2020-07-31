@@ -16,6 +16,8 @@ class DevelopmentConfig:
 
 class ProductionConfig:
     DEBUG = False
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://levy:Dadiesboy12@localhost/ronchezfitness'
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
 class TestingConfig:
