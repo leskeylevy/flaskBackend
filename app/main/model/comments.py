@@ -1,4 +1,5 @@
 from .. import db, flask_bcrypt
+import datetime
 
 
 class Comments(db.Model):
@@ -9,6 +10,7 @@ class Comments(db.Model):
     username = db.Column(db.String(100), nullable=False)
     comment = db.Column(db.String(700), nullable=False)
     blog_id = db.Column(db.Integer, nullable=False)
+    created_on = db.Column(db.DateTime, nullable=True, default=datetime.datetime.utcnow())
     likes = db.Column(db.Integer, autoincrement=True)
     dislikes = db.Column(db.Integer, autoincrement=True)
 

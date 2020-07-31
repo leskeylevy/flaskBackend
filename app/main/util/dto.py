@@ -41,5 +41,6 @@ class CommentsDto:
     comment = api.model('comment', {
         'username': fields.String(required=True, description='username for the commenting party'),
         'comment': fields.String(required=True, description='The actual comment'),
-        'blog_id': fields.Integer(required=True, description='the blog id where the comments belongs')
+        'blog_id': fields.Integer(required=True, description='the blog id where the comments belongs'),
+        'created_on': fields.String(description='Comment created on')
     })
