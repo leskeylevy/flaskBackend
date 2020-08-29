@@ -6,7 +6,7 @@ from flask_script import Manager
 from flask_cors import CORS
 
 from app.main import create_app, db
-from app.main.model import user, blacklist, blog, comments
+from app.main.model import user, blacklist, blog, comments, products
 from app import blueprint
 
 app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')

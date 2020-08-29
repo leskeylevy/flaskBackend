@@ -10,10 +10,10 @@ class Blog(db.Model):
     title = db.Column(db.String(250), unique=True, nullable=False)
     slug = db.Column(db.String(255))
     created_on = db.Column(db.DateTime, nullable=False)
-    content = db.Column(db.String(12000), nullable=False)
+    content = db.Column(db.String(120000), nullable=False)
     status = db.Column(db.Integer, nullable=False)
-    caption = db.Column(db.String(500), nullable=False)
-    img = db.Column(db.String(350), nullable=False)
+    caption = db.Column(db.String(5000), nullable=False)
+    img = db.Column(db.String(1000), nullable=False)
     author_id = db.Column(db.Integer)
     updated_on = db.Column(db.DateTime, nullable=False)
 
