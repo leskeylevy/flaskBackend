@@ -9,7 +9,7 @@ from app.main import create_app, db
 from app.main.model import user, blacklist, blog, comments, products
 from app import blueprint
 
-app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
+app = create_app(os.getenv('BOILERPLATE_ENV') or 'prod')
 app.register_blueprint(blueprint)
 CORS(app, support_credentials=True)
 
