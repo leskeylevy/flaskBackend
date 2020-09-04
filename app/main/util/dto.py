@@ -43,13 +43,14 @@ class ProductDto:
         'description': fields.String(required=True, description='Product description'),
         'category': fields.String(required=True, description='Product category'),
         'quantity': fields.Integer(required=True, description='Number of products available'),
-        'productId': fields.String(required=True, description='Unique product identifier'),
-        'supplierId': fields.String(required=True, descrpition='Unique supllier Identity'),
-        'status': fields.String(required=True, description='Is it new available or out of stock?'),
+        'productId': fields.String(description='Unique product identifier'),
+        'supplierId': fields.String(descrpition='Unique supllier Identity'),
+        'status': fields.String(description='Is it new available or out of stock?'),
         'mainImage': fields.String(description='Products main Image'),
         'angle1': fields.String(description='different angles of the product'),
         'angle2': fields.String(description='different angles of the product'),
-        'angle3': fields.String(description='different angles of the product')
+        'angle3': fields.String(description='different angles of the product'),
+        'price': fields.Integer(required=True, description='Price per product')
     })
 
 

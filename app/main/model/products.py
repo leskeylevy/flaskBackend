@@ -8,6 +8,7 @@ class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(12000), nullable=False)
+    price = db.Column(db.Integer, default=2500, nullable=False)
     added_on = db.Column(db.DateTime, nullable=False)
     productId = db.Column(db.String(100), unique=True)
     supplierId = db.Column(db.String(100), nullable=False)
