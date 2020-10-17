@@ -16,7 +16,7 @@ class DevelopmentConfig:
 
 class ProductionConfig:
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://uzpboedontfizx:e4b5a45edf8d74837d5dba8d82a933af0408233e82c84fa247ca18638041aa01@ec2-34-224-229-81.compute-1.amazonaws.com:5432/da66n8svgvo5rh'
+    SQLALCHEMY_DATABASE_URI = os.getenv('postgres_uri')
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
