@@ -4,7 +4,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
-    SECRET_KEY = os.getenv('SECRET_KEY', '\x00\xa8\xe9Fn0\x9b_\xa1\xfb\x14\xc3R\xac4|')
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     DEBUG = False
 
 
@@ -16,7 +16,7 @@ class DevelopmentConfig:
 
 class ProductionConfig:
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.getenv('postgres_uri')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('postgres_uri')
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
