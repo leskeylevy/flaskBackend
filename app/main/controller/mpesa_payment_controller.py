@@ -2,12 +2,14 @@ from flask import request
 from flask_restx import Resource
 from app.main.service.payments import stk_push, get_mpesa_token
 from ..util.dto import MpesaDto
-from flask_mpesa import MpesaAPI
+
+# from flask_mpesa import MpesaAPI
 
 api = MpesaDto.api
 mpesa = MpesaDto.product_sales
-mpesaapi = MpesaAPI
 
+
+# mpesaapi = MpesaAPI
 
 @api.route('/mpesa')
 class MpesaPayment(Resource):
@@ -28,8 +30,8 @@ class SafaricomResponse(Resource):
     """
     Transaction response
     """
+
     @api.expect()
     def post(self):
         data = request.json
         return data
-

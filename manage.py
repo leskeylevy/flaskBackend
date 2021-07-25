@@ -1,4 +1,4 @@
-import os
+# import os
 import unittest
 from dotenv import load_dotenv
 
@@ -7,7 +7,7 @@ from flask_script import Manager
 from flask_cors import CORS
 
 from app.main import create_app, db
-from app.main.model import user, blacklist, blog, comments, products
+# from app.main.model import user, blacklist, blog, comments, products
 from app import blueprint
 
 load_dotenv('.env')
@@ -25,6 +25,7 @@ manager = Manager(app)
 
 migrate = Migrate(app, db)
 
+# add db commands to the manager file
 manager.add_command('db', MigrateCommand)
 
 

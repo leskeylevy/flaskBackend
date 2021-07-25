@@ -62,3 +62,23 @@ class Blog(Resource):
             return 404
         else:
             return blog
+
+
+@api.route('/test')
+@api.response(404, "Test not found.")
+class Blog(Resource):
+    @api.doc('test')
+    def get(self):
+        """test"""
+        test_res = {
+                'test': 'test'
+            }
+        return test_res
+
+
+# @api.route('/test')
+# def test():
+#     test_res = {
+#         'test': test
+#     }
+#     return test_res

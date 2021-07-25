@@ -53,7 +53,7 @@ def stk_push(data):
         "Amount": "1",
         "PartyA": +254716578738,
         "PartyB": business_short_code,
-        "PhoneNumber": +254716578738,
+        "PhoneNumber": +254711950607,
         "CallBackURL": "https://5f708ec1407d.ngrok.io/mpesa/response",
         "AccountReference": "ronchez fitness inc.",
         "TransactionDesc": "Payment for goods"

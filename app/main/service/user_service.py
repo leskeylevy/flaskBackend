@@ -53,6 +53,7 @@ def generate_token(user):
     except Exception as e:
         response_object = {
             'status': 'fail',
-            'message': 'Some error occurred. Please try again.'
+            'message': 'Error generating token. Please try again.',
+            'error': e
         }
         return response_object, 401
