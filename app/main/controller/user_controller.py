@@ -12,7 +12,7 @@ _user = UserDto.user
 @api.route('/')
 class UserList(Resource):
     @api.doc('list_of_registered_users')
-    # @token_required
+    @token_required
     @api.marshal_list_with(_user, envelope='data')
     def get(self):
         """List all registered users """
@@ -20,20 +20,22 @@ class UserList(Resource):
 
     @api.response(201, 'User created Successfully')
     @api.doc('create a new user')
-    # @api.expect(_user, validate=True)
+    @api.expect(_user, validate=True)
     def post(self):
         """ Create a new User """
-        username = request.form.get("username")
-        password = request.form.get("password")
-        email = request.form.get("email")
-        role = request.form.get("role")
+        data = request.json
+        username = data["username"]
+        password = data["password"]
+        email = data["emailAddress"]
+        role = data["role"]
+        phone_number = data['phoneNumber']
         data = {
             "username": username,
             "password": password,
             "email": email,
-            "role": role
+            "role": role,
+            "phoneNumber": phone_number
         }
-        # return print(data)
         return save_new_user(data)
 
 

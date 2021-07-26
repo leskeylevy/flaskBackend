@@ -62,3 +62,11 @@ class CommentsDto:
         'blog_id': fields.Integer(required=True, description='the blog id where the comments belongs'),
         'created_on': fields.String(description='Comment created on')
     })
+
+
+class MpesaDto:
+    api = Namespace('mpesa', description='Mpesa operations for buying products')
+    product_sales = api.model('soldProducts', {
+        'phone_number': fields.String(required=True, description='Phone number making the payment'),
+        'amount': fields.Integer(required=True, description='payment amount')
+    })

@@ -1,5 +1,4 @@
 import datetime
-import slugify
 
 from app.main import db
 from app.main.model.blog import Blog
@@ -52,7 +51,8 @@ def edit_blog(data):
 
 
 def get_all_blogs():
-    return Blog.query.order_by(Blog.created_on.desc()).all()
+    allBlogs = Blog.query.order_by(Blog.created_on.desc()).all()
+    return allBlogs
 
 
 def get_all_published_blogs():
@@ -67,3 +67,5 @@ def get_one_blog(slug):
 def save_blog(data):
     db.session.add(data)
     db.session.commit()
+
+#
